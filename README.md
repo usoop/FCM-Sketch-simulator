@@ -44,4 +44,10 @@ Currently, our FCM-Sketch implementation is only for 3-level trees (8, 16, and 3
 
 You can cite this repository or FCM-Sketch as
 
-    @article{TBD}
+    @article{song2020fcm,
+        title={FCM-Sketch: Generic Network Measurements with Data Plane Support},
+        author={Cha Hwan, Song and Kannan, Pravein Govindan and Low, Bryan Kian Hsiang and Chan, Mun Choon},
+        journal={ACM CoNEXT 2020},
+        year={2020},
+        publisher={ACM}
+    }
