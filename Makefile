@@ -1,11 +1,22 @@
-GCC = g++-5 -O2
-CFLAGS = -std=c++14
+GCC = g++
+GCC_VERSION = $(shell echo `gcc -dumpversion | cut -f1-2 -d.` \>= 5.0 | bc )
+CFLAGS += -O2 -std=c++14
 SSEFLAGS = -msse2 -mssse3 -msse4.1 -msse4.2 -mavx -march=native
-EFLAGS = -lpthread -lz
+EFLAGS = -lpthread
 
-FILES = fcmsketch.out fcmplus.out elasticp4.out mrac.out hll.out cusketch.out cmsketch.out pyramid.out univmon.out
+FILES = version_print \
+version_check \
+fcmsketch.out fcmplus.out elasticp4.out mrac.out hll.out cusketch.out cmsketch.out pyramid.out univmon.out
 
 all: $(FILES)
+
+version_print: 
+	@echo "KERNEL_GCC_VERSION: " $(shell gcc -dumpversion)
+
+version_check:
+ifeq ($(GCC_VERSION),0) 
+	$(error GCC version is not higher than 5.0)	
+endif
 
 fcmsketch.out: fcmsketch.cpp
 	$(GCC) $(CFLAGS) $(SSEFLAGS) -o fcmsketch.out fcmsketch.cpp $(EFLAGS)
