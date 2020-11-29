@@ -21,7 +21,7 @@ Note that this code is for accuracy measurement. We do not intend to measure a r
 
 ### How to compile & evaluate
 
-We use `gcc+-5` to compile the cpp source codes. All optionals can be found in `Makefile`.
+We use `gcc+ (> 5.0.0)` to compile the cpp source codes. All optionals can be found in `Makefile`.
 
 First, you can either compile each or all algorithms in this directory using `make`. For example,
 
