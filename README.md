@@ -31,6 +31,7 @@ For example, to compile FCM-Sketch, use `make fcmsketch.out`.
 - `make clean` : it cleans all `*.out` files.
 
 To run the evaluation, you can simply run `./[Solution].out` which shows the results in terms of evaluation metrics (e.g., ARE, AAE, ...).
+For example, to run FCM-Sketch, use the command `./fcmsketch.out`.
 
 ### Sample trace
 
