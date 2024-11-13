@@ -5,16 +5,19 @@ int main()
 {
     printf("Start accuracy measurement of MRAC\n");
     uint32_t totnum_packet = ReadTraces();
+    /* NOTE: init pointer */
     MRAC *mrac = NULL;
 
     for(int iter_data = 0; iter_data < NUM_TRACE; ++iter_data){
         printf("[INFO] %3d-th trace starts to be processed..\n", iter_data+1);
         unordered_map<uint32_t, uint32_t> true_freq;
         vector<int> true_dist(1000000);
+        /* NOTE: init instance */
         mrac = new MRAC(MRAC_BYTES);
         int num_pkt = (int)traces[iter_data].size();
 
         for (int i = 0; i < num_pkt; ++i){
+            /* NOTE: insert */
             mrac->insert((uint8_t*)(traces[iter_data][i].key));
             true_freq[*((uint32_t*)(traces[iter_data][i].key))]++;
         }
@@ -36,6 +39,7 @@ int main()
         }
 
         vector<double> dist;
+        /* NOTE: get distribution */
         mrac->get_distribution(dist);   
 
         // compute WMRD
@@ -94,6 +98,7 @@ int main()
         printf("Entropy Relative Error (RE) = %f (true : %f, est : %f)\n", entropy_err, entropy_true, entropy_est);
         /*-*-*-* End of flow size distribution and entropy *-*-*-*/
 
+        /* NOTE: remove */
         delete mrac;
     }
     printf("END\n");
