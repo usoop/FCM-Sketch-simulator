@@ -47,3 +47,7 @@ univmon.out: univmon.cpp
 
 clean:
 	rm $(all) -f *~ *.o *.out
+
+
+mrac_zl.out: mrac_zl.cpp
+	$(GCC) $(CFLAGS) $(SSEFLAGS) -o mrac_zl.out mrac_zl.cpp
